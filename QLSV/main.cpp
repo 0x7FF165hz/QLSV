@@ -9,6 +9,17 @@
 using namespace std;
 const std::string filename = "data.txt";
 
+/* LIST FUNCTION USE IN THIS PROGRAMMING :
+- Feature Function :
++ clearScreen() : Clear Screen in console
++ press() : push to console -> "Press any key to continue"
+
+- Key Function : 
++ load_person_from_data () : Load person from data.txt to console
++ _print_person() : print list person in data.txt
++ _list_menu() : Print list menu choice
+*/
+
 // Structure for one person
 struct Person
 {
@@ -32,6 +43,15 @@ void clearScreen() {
 #endif
 }
 
+//Function press any key to continue
+void press() {
+	cout << "Press any key to continue...";
+	cin.clear();
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	cin.get();
+	return;
+}
+
 // Load person from data.txt to console
 void _load_person_from_data(std::vector<Person>& person_list) {
 	Person person;
@@ -52,21 +72,14 @@ void _load_person_from_data(std::vector<Person>& person_list) {
 
 //print list person in data.txt
 void _print_person(std::vector<Person>& person_list) {
-	for (int i = 0; i < person_list.size(); i++)
-	{
-		cout << "Ten: " << person_list[i].fullname << "\n";
-		cout << "Tuoi: " << person_list[i].age << "\n";
-		cout << "Diem: " << person_list[i].score << "\n";
+	cout << "+" << std::setfill('-') << std::setw(7) << "+" << std::setw(40)                                                                                             << "+" << "\n";
+	cout << '|' << " STT" << "  |" << std::left << std::setfill(' ') << std::setw(22) << " Ho va ten" << "|" << std::setw(7) <<" Tuoi" << '|' << std::setw(8) << " Diem" << '|' << "\n";
+	cout << "+" << std::setfill('-') << std::setw(7) << std::right << "+" << std::setw(40) << std::right                                                                 << "+" << "\n";
+	for (int i = 0; i < person_list.size(); i++) {
+		cout << "|" << "  " << std::setfill(' ') << std::left << std::setw(4) << i << "|" << " " << std::setw(21)
+			<< person_list[i].fullname << "|" << " " << std::setw(6) << person_list[i].age << "|" << " " << std::setw(7) << person_list[i].score                         << "|" << "\n";
 	}
-}
-
-//Function press any key to continue
-void press() {
-	cout << "Press any key to continue...";
-	cin.clear();
-	cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
-	cin.get();
-	return;
+	cout << "+" << std::setfill('-') << std::setw(7) << std::right << "+" << std::setw(40) << std::right                                                                 << "+" << "\n";
 }
 
 // Print list menu choice
