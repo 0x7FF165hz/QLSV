@@ -186,6 +186,59 @@ void _sort_person(std::vector<Person>& person_list) {
 		break;
 	}
 }
+// Average score of list
+void _average_score(std::vector<Person> person_list) {
+	float sum = 0;
+	for (int i = 0; i < person_list.size(); i++) {
+		sum = sum + person_list[i].score;
+	}
+	sum = sum / person_list.size();
+	cout << "Diem trung binh cua ca lop la: " << sum << "\n";
+}
+// Statictical medium score of list
+void _medium_score(std::vector<Person> person_list) {
+	float sum = 0;
+	for (int i = 0; i < person_list.size(); i++) {
+		if (person_list[i].score >= 7 && person_list[i].score < 8.5) sum++;
+	}
+	sum = (sum / person_list.size()) * 100;
+	cout << "% Hoc sinh kha la: " << sum << "%" << "\n";
+}
+// Statictical high score of list
+void _high_score(std::vector<Person> person_list) {
+	float sum = 0;
+	for (int i = 0; i < person_list.size(); i++) {
+		if (person_list[i].score >= 8.5 && person_list[i].score < 10) sum++;
+	}
+	sum = (sum / person_list.size()) * 100;
+	cout << "% Hoc sinh kha la: " << sum << "%" << "\n";
+}
+// Statictical best person of list
+void _highest_person_score(std::vector<Person> person_list) {
+
+}
+void _statictical(std::vector<Person>& person_list) {
+	int command;
+	cout << "\t\t(!) Diem trung binh cua ca lop" << "\n";
+	cout << "\t\t(!) % Diem kha trong ca lop" << "\n";
+	cout << "\t\t(!) % Diem gioi trong ca lop" << "\n";
+	cout << "Nhap lua chon cua ban: "; cin >> command;
+
+	switch (command) {
+	case 1:
+		_average_score(person_list);
+		break;
+	case 2:
+		_medium_score(person_list);
+		break;
+	case 3:
+		_high_score(person_list);
+		break;
+	case 4:
+		_highest_person_score(person_list);
+		break;
+	}
+}
 // Print list menu choice
 int _list_menu() {
 	int command = 0;
@@ -236,6 +289,10 @@ int main()
 			break;
 		case 6:
 			_sort_person(person_list);
+			press();
+			break;
+		case 7:
+			_statictical(person_list);
 			press();
 			break;
 		case 9:
